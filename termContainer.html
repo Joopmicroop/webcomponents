@@ -10,10 +10,28 @@
 <template id="termContainer">
     <style>
         .group{
-            background: rgba(0,0,0,.5);position:relative; border:1px solid white;    margin: 0.75em; padding: 0.5em; min-width: 80px;
+            background: rgba(0,0,0,.5);
+            position:relative;
+            border:1px solid white;
+            margin: 0.75em;
+            padding: 0.5em;
+            min-width: 80px;
+
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Chrome/Safari/Opera */
+            -khtml-user-select: none; /* Konqueror */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
         }
         .group .title{
-            background:orange; color:black; font-weight:bold; position:absolute; top:-0.75em; left:10px;
+            background:orange;
+            color:black;
+            font-weight:bold;
+            position:absolute;
+            top:-0.75em;
+            left:10px;
+            cursor: pointer;
         }
         .group .collapse{
             display:none;
