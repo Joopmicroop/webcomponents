@@ -9,13 +9,30 @@
 
 <template id="termContainer">
     <style>
-        .group{
+        /*wc-term-container{*/
+            /*margin-top: 0.76em;*/
+        /*}*/
+        .term-container.wrapper{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding-top: 0.76em;
+            height: calc(100% - 0.76em);
+            height: 100%;
+            /*width: 100%;*/
+        }
+        .term-container > .group{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
             background: rgba(0,0,0,.5);
             position:relative;
             border:1px solid white;
-            margin: 0.75em;
+            /*margin: 0.75em;*/
             padding: 0.5em;
             min-width: 80px;
+            height: 100%;
 
             -webkit-touch-callout: none; /* iOS Safari */
             -webkit-user-select: none; /* Chrome/Safari/Opera */
@@ -24,7 +41,7 @@
             -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
         }
-        .group .title{
+        .term-container > .group .title{
             background:orange;
             color:black;
             font-weight:bold;
@@ -33,16 +50,18 @@
             left:10px;
             cursor: pointer;
         }
-        .group .collapse{
+        .term-container > .group .collapse{
             display:none;
         }
     </style>
-    <div class="group">
-        <div class="title">
-            [ <span id="title"></span> ]
-        </div>
-        <div class="content">
-            <content></content>
+    <div class="term-container wrapper">
+        <div class="group">
+            <div class="title">
+                [ <span id="title"></span> ]
+            </div>
+            <div class="content">
+                <content></content>
+            </div>
         </div>
     </div>
 </template>
@@ -68,10 +87,12 @@
             } else this.setTitle(this.what);
         };
         MyElementProto.attachedCallback = function(){
-            this.termTitle.addEventListener('click', this.toggleCollapse.bind(this));
+            if(this.hasAttribute('collapsable'))
+                this.termTitle.addEventListener('click', this.toggleCollapse.bind(this));
         };
         MyElementProto.detachedCallback = function(){
-            this.termTitle.removeEventListener('click', this.toggleCollapse.bind(this));
+            if(this.hasAttribute('collapsable'))
+                this.termTitle.removeEventListener('click', this.toggleCollapse.bind(this));
         };
         MyElementProto.attributeChangedCallback = function(attr, oldVal, newVal) {
             if (attr === 'termtitle') this.setTitle(newVal);

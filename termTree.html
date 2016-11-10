@@ -58,6 +58,9 @@
             shadowRoot.appendChild(clone);
 
             function createTree(children, target){
+                //┐ &#x2510
+                //├ &#x251C
+                //└ &#x2514
                 [].forEach.call(children, function(v,i,a){
                     if(v.attributes.title){
                         var div = document.createElement('div');
@@ -73,7 +76,7 @@
                             } else {
                                 t.removeAttribute('closed');
                                 t.setAttribute('open','');
-                                t.innerHTML = '[-]┐ '+ v.attributes.title.value;
+                                t.innerHTML = '[-]&#x2510 '+ v.attributes.title.value;
                             }
                         }
                         div.classList.add('group');
@@ -88,7 +91,7 @@
                         var item = document.createElement('div');
                         item.classList.add('item');
                         var treeItem = document.createElement('span');
-                        treeItem.innerHTML = ((a.length-1) > i)? '├ ' :'└ ';
+                        treeItem.innerHTML = ((a.length-1) > i)? '&#x251C ' :'&#x2514 ';
                         item.appendChild(treeItem);
                         //v.classList.add('item');
                         v.style.display = 'inline-block';
